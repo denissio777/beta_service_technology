@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <title>Main page</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <div class="card text-center">
+        <div class="card-header">
+            I wish achieve a job in your company
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">XML_daily and XML_dynamic</h5>
+            <p class="card-text">After pushig the button tables will create and fill</p>
+            <a href="daily_and_dynamic.html" class="btn btn-primary">Away we go</a>
+        </div>
+        <div class="card-footer text-muted">
+            Anyway thank you for interesting task<br/>
+            Keep calm and drink coffee :)
+        </div>
+    </div>
+</div>
+<br/>
+<div class="container">
+<div class="card text-center">
+    <div class="card-header">
+        Give me a chance please
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">REST API</h5>
+        <form  method="post">
+            <div class="container">
+                <div class="input-group mb-3" style="width: 50%; float: left;">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" >Date from</span>
+                    </div>
+                    <input type="text" name="dateFromm" id="dateFrom" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="yyyy-mm-dd">
+                </div>
+                <div class="input-group mb-3" style="width: 50%;">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" >Date to</span>
+                    </div>
+                    <input type="text" name="dateTot" id="dateTo" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="yyyy-mm-dd">
+                </div>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text">valuteID</span>
+              </div>
+              <input id="valuteID" name="valuteIDD" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="R01234">
+            </div>
+            </div>
+            <input onclick="request()" class="btn-lg btn-outline-primary" type="button" name="send" value="Confirm" />
+        </form>
+    </div>
+    <div class="card-footer text-muted">
+        I promise that my codestyle will more clear and strong
+    </div>
+</div>
+<br/>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">numCode</th>
+      <th scope="col">сharCode</th>
+      <th scope="col">name</th>
+      <th scope="col">value</th>
+      <th scope="col">date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+        <td id="forNum"></td>
+      <td id="forChar"></td>
+      <td id="forName"></td>
+      <td id="forValue"></td>
+      <td id="forDate"></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<script
+        src="https://code.jquery.com/jquery-2.2.4.js"
+        integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
+        crossorigin="anonymous">
+</script>
+<script type="text/javascript">
+    function request() {
+            let valuteID = $('#valuteID').val();
+            let dateTo = $('#dateTo').val();
+            let dateFrom = $('#dateFrom').val();
+            $.get('the_best_db.php?valute_id=' + valuteID + '&date_to=' + dateTo + '&date_from=' + dateFrom,
+                function (response) {
+                    for (let n = 0; n <= 33; n++) {
+                        let resDate = (response[n].date);
+                        let resChar = (response[n].char_code);
+                        let resNum = (response[n].num_code);
+                        let resName = (response[n].name);
+                        let resValue = (response[n].value);
+
+                        let nodeForNum = document.createElement("p");
+                        let textNodeForNum = document.createTextNode(resNum);
+                        nodeForNum.appendChild(textNodeForNum);
+                        document.getElementById("forNum").appendChild(nodeForNum);
+
+                        let nodeForChar = document.createElement("p");
+                        let textNodeForChar = document.createTextNode(resChar);
+                        nodeForChar.appendChild(textNodeForChar);
+                        document.getElementById("forChar").appendChild(nodeForChar);
+
+                        let nodeForDate = document.createElement("p");
+                        let textNodeForDate = document.createTextNode(resDate);
+                        nodeForDate.appendChild(textNodeForDate);
+                        document.getElementById("forDate").appendChild(nodeForDate);
+
+                        let nodeForName = document.createElement("p");
+                        let textNodeForName = document.createTextNode(resName);
+                        nodeForName.appendChild(textNodeForName);
+                        document.getElementById("forName").appendChild(nodeForName);
+
+                        let nodeForValue = document.createElement("p");
+                        let textNodeForValue = document.createTextNode(resValue);
+                        nodeForValue.appendChild(textNodeForValue);
+                        document.getElementById("forValue").appendChild(nodeForValue);
+                    }
+                });
+    }
+</script>
+</body>
+</html>
