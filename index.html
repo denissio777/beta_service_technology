@@ -16,7 +16,7 @@
         <div class="card-body">
             <h5 class="card-title">XML_daily and XML_dynamic</h5>
             <p class="card-text">After pushig the button tables will create and fill</p>
-            <a href="daily_and_dynamic.html" class="btn btn-primary">Away we go</a>
+            <a href="daily_and_dynamic.html" target="_blank" class="btn btn-primary">Away we go</a>
         </div>
         <div class="card-footer text-muted">
             Anyway thank you for interesting task<br/>
@@ -53,7 +53,7 @@
               <input id="valuteID" name="valuteIDD" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="R01234">
             </div>
             </div>
-            <input onclick="request()" class="btn-lg btn-outline-primary" type="button" name="send" value="Confirm" />
+            <input onclick="request()" class="btn-lg btn-outline-primary" type="button" name="send" value="Push me" />
         </form>
     </div>
     <div class="card-footer text-muted">
@@ -125,6 +125,7 @@
                         let textNodeForValue = document.createTextNode(resValue);
                         nodeForValue.appendChild(textNodeForValue);
                         document.getElementById("forValue").appendChild(nodeForValue);
+
                     }
                 });
     }
