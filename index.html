@@ -61,7 +61,7 @@
     </div>
 </div>
 <br/>
-<table class="table table-striped">
+<table class="table table-striped" id="table" style="display: none">
   <thead>
     <tr>
       <th scope="col">numCode</th>
@@ -89,45 +89,46 @@
 </script>
 <script type="text/javascript">
     function request() {
-            let valuteID = $('#valuteID').val();
-            let dateTo = $('#dateTo').val();
-            let dateFrom = $('#dateFrom').val();
-            $.get('the_best_db.php?valute_id=' + valuteID + '&date_to=' + dateTo + '&date_from=' + dateFrom,
-                function (response) {
-                    for (let n = 0; n <= 33; n++) {
-                        let resDate = (response[n].date);
-                        let resChar = (response[n].char_code);
-                        let resNum = (response[n].num_code);
-                        let resName = (response[n].name);
-                        let resValue = (response[n].value);
+        let valuteID = $('#valuteID').val();
+        let dateTo = $('#dateTo').val();
+        let dateFrom = $('#dateFrom').val();
+        $.get('the_best_db.php?valute_id=' + valuteID + '&date_to=' + dateTo + '&date_from=' + dateFrom,
+            function (response) {
+                $('#table').css('display', '');
+                for (let n = 0; n <= 33; n++) {
+                    let resDate = (response[n].date);
+                    let resChar = (response[n].char_code);
+                    let resNum = (response[n].num_code);
+                    let resName = (response[n].name);
+                    let resValue = (response[n].value);
 
-                        let nodeForNum = document.createElement("p");
-                        let textNodeForNum = document.createTextNode(resNum);
-                        nodeForNum.appendChild(textNodeForNum);
-                        document.getElementById("forNum").appendChild(nodeForNum);
+                    let nodeForNum = document.createElement("p");
+                    let textNodeForNum = document.createTextNode(resNum);
+                    nodeForNum.appendChild(textNodeForNum);
+                    document.getElementById("forNum").appendChild(nodeForNum);
 
-                        let nodeForChar = document.createElement("p");
-                        let textNodeForChar = document.createTextNode(resChar);
-                        nodeForChar.appendChild(textNodeForChar);
-                        document.getElementById("forChar").appendChild(nodeForChar);
+                    let nodeForChar = document.createElement("p");
+                    let textNodeForChar = document.createTextNode(resChar);
+                    nodeForChar.appendChild(textNodeForChar);
+                    document.getElementById("forChar").appendChild(nodeForChar);
 
-                        let nodeForDate = document.createElement("p");
-                        let textNodeForDate = document.createTextNode(resDate);
-                        nodeForDate.appendChild(textNodeForDate);
-                        document.getElementById("forDate").appendChild(nodeForDate);
+                    let nodeForDate = document.createElement("p");
+                    let textNodeForDate = document.createTextNode(resDate);
+                    nodeForDate.appendChild(textNodeForDate);
+                    document.getElementById("forDate").appendChild(nodeForDate);
 
-                        let nodeForName = document.createElement("p");
-                        let textNodeForName = document.createTextNode(resName);
-                        nodeForName.appendChild(textNodeForName);
-                        document.getElementById("forName").appendChild(nodeForName);
+                    let nodeForName = document.createElement("p");
+                    let textNodeForName = document.createTextNode(resName);
+                    nodeForName.appendChild(textNodeForName);
+                    document.getElementById("forName").appendChild(nodeForName);
 
-                        let nodeForValue = document.createElement("p");
-                        let textNodeForValue = document.createTextNode(resValue);
-                        nodeForValue.appendChild(textNodeForValue);
-                        document.getElementById("forValue").appendChild(nodeForValue);
+                    let nodeForValue = document.createElement("p");
+                    let textNodeForValue = document.createTextNode(resValue);
+                    nodeForValue.appendChild(textNodeForValue);
+                    document.getElementById("forValue").appendChild(nodeForValue);
 
-                    }
-                });
+                }
+            });
     }
 </script>
 </body>
