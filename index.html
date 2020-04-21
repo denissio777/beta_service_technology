@@ -15,8 +15,9 @@
         </div>
         <div class="card-body">
             <h5 class="card-title">XML_daily and XML_dynamic</h5>
-            <p class="card-text">After pushig the button tables will create and fill</p>
-            <a href="daily_and_dynamic.html" target="_blank" class="btn btn-primary">Away we go</a>
+            <p class="card-text">After pushig the buttons tables will create and fill</p>
+            <button type="button" class="btn btn-primary" onclick="getDaily()">Daily</button>
+            <button id="dynamic" type="button" class="btn btn-primary" onclick="getDynamic()" style="display: none">Dynamic</button>
         </div>
         <div class="card-footer text-muted">
             Anyway thank you for interesting task<br/>
@@ -83,53 +84,11 @@
 </table>
 </div>
 <script
-        src="https://code.jquery.com/jquery-2.2.4.js"
-        integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
+        src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
         crossorigin="anonymous">
+
 </script>
-<script type="text/javascript">
-    function request() {
-        let valuteID = $('#valuteID').val();
-        let dateTo = $('#dateTo').val();
-        let dateFrom = $('#dateFrom').val();
-        $.get('the_best_db.php?valute_id=' + valuteID + '&date_to=' + dateTo + '&date_from=' + dateFrom,
-            function (response) {
-                $('#table').css('display', '');
-                for (let n = 0; n <= 33; n++) {
-                    let resDate = (response[n].date);
-                    let resChar = (response[n].char_code);
-                    let resNum = (response[n].num_code);
-                    let resName = (response[n].name);
-                    let resValue = (response[n].value);
-
-                    let nodeForNum = document.createElement("p");
-                    let textNodeForNum = document.createTextNode(resNum);
-                    nodeForNum.appendChild(textNodeForNum);
-                    document.getElementById("forNum").appendChild(nodeForNum);
-
-                    let nodeForChar = document.createElement("p");
-                    let textNodeForChar = document.createTextNode(resChar);
-                    nodeForChar.appendChild(textNodeForChar);
-                    document.getElementById("forChar").appendChild(nodeForChar);
-
-                    let nodeForDate = document.createElement("p");
-                    let textNodeForDate = document.createTextNode(resDate);
-                    nodeForDate.appendChild(textNodeForDate);
-                    document.getElementById("forDate").appendChild(nodeForDate);
-
-                    let nodeForName = document.createElement("p");
-                    let textNodeForName = document.createTextNode(resName);
-                    nodeForName.appendChild(textNodeForName);
-                    document.getElementById("forName").appendChild(nodeForName);
-
-                    let nodeForValue = document.createElement("p");
-                    let textNodeForValue = document.createTextNode(resValue);
-                    nodeForValue.appendChild(textNodeForValue);
-                    document.getElementById("forValue").appendChild(nodeForValue);
-
-                }
-            });
-    }
-</script>
+<script src="main.js"></script>
 </body>
 </html>
